@@ -12,6 +12,7 @@ public class conexionBD {
 	static String URL;
 	static String USER;
 	static String PASS;
+	static String DRIVERS;
 	static Connection conexion= null;
 	static Statement stmt = null;
 public static Connection CrearConexion() throws ClassNotFoundException, SQLException{
@@ -24,6 +25,7 @@ public static Connection CrearConexion() throws ClassNotFoundException, SQLExcep
 		 URL = propiedades.getProperty("host");
 		 USER =propiedades.getProperty("user");
 		 PASS =propiedades.getProperty("password");
+		 DRIVERS =propiedades.getProperty("driver");
 		
 		
 
@@ -32,7 +34,7 @@ public static Connection CrearConexion() throws ClassNotFoundException, SQLExcep
 
 	 }
 	
-	Class.forName("org.postgresql.Driver");
+	Class.forName(DRIVERS);
 	conexion = DriverManager.getConnection(URL, USER, PASS);
 	if (conexion != null){
 	
